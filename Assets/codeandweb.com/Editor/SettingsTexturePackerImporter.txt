@@ -1,0 +1,8 @@
+version: 2
+tpsheetFileNames:
+- Assets/_Game/Textures/zitga-asset.tpsheet
+textureFileNames:
+- Assets/_Game/Textures/zitga-asset.png
+normalmapFileNames:
+- 
+enableDebugOutput: 0

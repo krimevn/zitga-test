@@ -28,16 +28,19 @@ public class LevelCell : MonoBehaviour, ICell2
         _collumIndex = columnIndex;
         _levelInfo = info;
 
-        if (info.levelId == 1)
+        if (info.levelId == 0)
             LevelText.text = "Tutorial";
         else
-            LevelText.text = info.levelId.ToString();
+            LevelText.text = (info.levelId+1).ToString();
 
         LockedImg.gameObject.SetActive(!info.isUnlocked);
 
         _selfButton.onClick.RemoveAllListeners();
 
-        SetStars(info.stars);
+        if (info.isUnlocked)
+            SetStars(info.stars);
+        else
+            HideAllStars();
 
         if(onCLick != null)
             _selfButton.onClick.AddListener(onCLick);
@@ -45,13 +48,10 @@ public class LevelCell : MonoBehaviour, ICell2
 
     void SetStars(int starCount)
     {
-        //foreach (var s in starList)
-        //{
-        //    s.gameObject.SetActive(false);
-        //}
         if (starCount > 3 || starCount < 1)
         {
-            Debug.Log("Something wrong with star input ? " + starCount);
+            //Debug.Log("Something wrong with star input ? " + starCount);
+            HideAllStars();
             return;
         }
         for (int i = 0; i < starList.Count; i++)
@@ -60,6 +60,14 @@ public class LevelCell : MonoBehaviour, ICell2
                 starList[i].gameObject.SetActive(true);
             else
                 starList[i].gameObject.SetActive(false);
+        }
+    }
+
+    void HideAllStars()
+    {
+        foreach (var s in starList)
+        {
+            s.gameObject.SetActive(false);
         }
     }
 }

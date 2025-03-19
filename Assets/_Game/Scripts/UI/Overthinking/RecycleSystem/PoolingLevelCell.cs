@@ -175,49 +175,38 @@ public class PoolingLevelCell : ScrollRect
     //Vector2 RecycleTopToBottom()
     Vector2 RecycleBottomToTop() //reverted name due reverted list, visual opposited with list order //change later
     {
-        Debug.Log("<color=blue>RecycleBottomToTop</color>");
+        //Debug.Log("<color=blue>RecycleBottomToTop</color>");
         _recycling = true;
         int n = 0;
         float posX = 0;
         float posY = _cellPool[topMostCellIndex].anchoredPosition.y;
 
         int additionalRows = 0;
-        Debug.Log("Rec 0: "+ topMostCellIndex + " : " + bottomMostCellIndex);
 
-        while (_cellPool[bottomMostCellIndex].MinY() > _recyclableViewBounds.max.y && _currentItemCount < DataSource.GetItemCount())
+        while (_cellPool[bottomMostCellIndex].MinY() > _recyclableViewBounds.max.y && _currentItemCount > _cellPool.Count)
         {
-            Debug.Log("RecycleTopToBottom run " + _topMostCellColumn);
             if (--_topMostCellColumn < 0)
             {
-                Debug.Log("Rec 1: " + _topMostCellColumn);
                 n++;
                 _topMostCellColumn = _columns - 1;
                 //_topMostCellColumn = 0;
-                Debug.Log("Rec 2: " + topMostCellIndex + " : " + _cellPool[topMostCellIndex].anchoredPosition);
                 posY = _cellPool[topMostCellIndex].anchoredPosition.y - _cellHeight;
                 additionalRows++;
             }
 
-            //if (_bottomMostCellColumn < 0)
-            //{
-            //    //n++;
-            //    _bottomMostCellColumn = _columns - 1;
-            //    //posY = _cellPool[bottomMostCellIndex].anchoredPosition.y - _cellHeight;
-            //    additionalRows--;
-            //}
+            if (_bottomMostCellColumn < 0)
+            {
+                _bottomMostCellColumn = _columns - 1;
+                additionalRows--;
+            }
 
             posX = _topMostCellColumn * _cellWidth; 
             _cellPool[bottomMostCellIndex].anchoredPosition = new Vector2(posX, posY);
 
-
-            DataSource.SetCell(_cachedCells[bottomMostCellIndex], _currentItemCount, _bottomMostCellColumn);
-            Debug.Log("Rec 3: " + topMostCellIndex + " : " + bottomMostCellIndex);
-            //bottomMostCellIndex = topMostCellIndex;
+            _currentItemCount--;
+            DataSource.SetCell(_cachedCells[bottomMostCellIndex], _currentItemCount-_cellPool.Count, _bottomMostCellColumn);
             topMostCellIndex = bottomMostCellIndex;
-            //topMostCellIndex = (topMostCellIndex + 1) % _cellPool.Count;
             bottomMostCellIndex = (bottomMostCellIndex - 1 + _cellPool.Count) % _cellPool.Count;
-
-            _currentItemCount++;
         }
 
         Content.sizeDelta += additionalRows * Vector2.up * _cellHeight;
@@ -261,14 +250,14 @@ public class PoolingLevelCell : ScrollRect
             _cellPool[topMostCellIndex].anchoredPosition = new Vector2(posX, posY);
 
             //if (--_topMostCellColumn < 0)
-            //if (++_topMostCellColumn >= _columns)
+            //if (++_topMostCellColumn >= _columns) //somehow auto scroll to end ?
             //{
             //    Debug.Log("Rec 3: " + _topMostCellColumn + " -- " + _columns);
             //    //_topMostCellColumn = _columns - 1;
             //    _topMostCellColumn = 0;
             //    additionalRows--;
             //}
-            
+
             DataSource.SetCell(_cachedCells[topMostCellIndex], _currentItemCount, _bottomMostCellColumn);
 
             bottomMostCellIndex = topMostCellIndex;

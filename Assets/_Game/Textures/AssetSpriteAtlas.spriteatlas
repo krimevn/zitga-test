@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AssetSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: fd60fcaac1236f943b6f73bdd7df8c92, type: 3}
+    - {fileID: 102900000, guid: b8552ba2469a7604d9a2465f9b64eed1, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 967cdd10744ae4148a6b443b8cb70df3, type: 3}
+  - {fileID: 21300000, guid: 76ab1fb0f8c124445a193dd32c3cc32f, type: 3}
+  - {fileID: 21300000, guid: 9f6a8aa238e1dfd4398da3559d9cabac, type: 3}
+  - {fileID: 21300000, guid: db7ae9536347b1142abb444116d65bb3, type: 3}
+  - {fileID: 21300000, guid: a1e72163168789949bb62ba6768054b4, type: 3}
+  - {fileID: 21300000, guid: dd2d50f3a8dc51a4a9174df1d77370e5, type: 3}
+  - {fileID: 21300000, guid: 2f32c494b30bcbb4aa56ad6438bec652, type: 3}
+  - {fileID: 21300000, guid: d8b067f46aed355459e0e856f4694edd, type: 3}
+  - {fileID: 21300000, guid: cc75e5153c4989e44b883e1679a3827c, type: 3}
+  - {fileID: 21300000, guid: 518339a5626372b41b76d670b7e52152, type: 3}
+  - {fileID: 21300000, guid: ed73f5f5bd9972e449c1b8345c760608, type: 3}
+  - {fileID: 21300000, guid: 45b4758628e250440b51760176118bf7, type: 3}
+  - {fileID: 21300000, guid: 08036b862e5a4dc48835211d36ee5b24, type: 3}
+  - {fileID: 21300000, guid: a4293196fd0e3124c9d49a3dd48a314f, type: 3}
+  - {fileID: 21300000, guid: cc1229b69aa7ca545ae8105220e580f8, type: 3}
+  - {fileID: 21300000, guid: 55bf1817ec7246d42baa9c9631a92129, type: 3}
+  - {fileID: 21300000, guid: e496a4678aeb2a4439dd467694e0f419, type: 3}
+  - {fileID: 21300000, guid: c3335d97d24bd234f93a1989e1f25b91, type: 3}
+  - {fileID: 21300000, guid: 73e7b5b7f776a6145a3098213a0c741c, type: 3}
+  - {fileID: 21300000, guid: dc9f87381f3c07248a1a778bc6ea4dc7, type: 3}
+  - {fileID: 21300000, guid: 8fabf7d8daac01d45a62cfa6ea98be45, type: 3}
+  - {fileID: 21300000, guid: b8518db90a4c2e840906e4f262474b88, type: 3}
+  - {fileID: 21300000, guid: 74af9dcaf63b1d34fbedf6c8cc863467, type: 3}
+  - {fileID: 21300000, guid: 9d0f464b196ca8e42b6f452095cdc15b, type: 3}
+  - {fileID: 21300000, guid: 407ba6fbb76b01e4183e5b21a838f038, type: 3}
+  - {fileID: 21300000, guid: 5c90293d97e16404bb22644338fd9999, type: 3}
+  - {fileID: 21300000, guid: 3fff5b4de61ab1444865b3a4bd0c65f4, type: 3}
+  - {fileID: 21300000, guid: 6d79576d6d05b654194d4dca82d0ddbf, type: 3}
+  - {fileID: 21300000, guid: e66ab2fd5399411468203dfdd204e5bc, type: 3}
+  - {fileID: 21300000, guid: 3526e7de0884eb24e9e4ff666a9de1f7, type: 3}
+  - {fileID: 21300000, guid: 8effe76f12ff4bb43866ef2df9777ed0, type: 3}
+  - {fileID: 21300000, guid: 0eb2799f9ab8b9343b36425dce94912c, type: 3}
+  - {fileID: 21300000, guid: e7d972bf8ec898f4891704bf0c40ea73, type: 3}
+  - {fileID: 21300000, guid: f0c5b2df86418444ebff1e6e3772ce20, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tutorial
+  - auto
+  - ui_lens
+  - stage_star1
+  - darkmode_stage
+  - stage_lock
+  - gate_r004
+  - stage_tree
+  - gate_b005
+  - gate_b001
+  - gate_b007
+  - 2p_bug
+  - stage_star2
+  - gate_r002
+  - gate_b004
+  - stage
+  - gate_b003
+  - gate_r000
+  - gate_r003
+  - background
+  - button_retry
+  - gate_r001
+  - gate_r007
+  - line_h
+  - 1p_bug
+  - gate_b000
+  - gate_b002
+  - button_menu
+  - gate_r005
+  - gate_r006
+  - button_next
+  - line_v
+  - bg
+  - gate_b006
+  m_RenderDataMap: {}
+  m_Tag: AssetSpriteAtlas
+  m_IsVariant: 0

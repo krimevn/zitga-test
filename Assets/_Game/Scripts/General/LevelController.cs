@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-using Sirenix.OdinInspector;
+using AYellowpaper.SerializedCollections;
 
-public class LevelController : SerializedMonoBehaviour
+public class LevelController : MonoBehaviour
 {
     //simple singleton
     public static LevelController instance {
@@ -90,9 +90,10 @@ public class LevelController : SerializedMonoBehaviour
     }
 }
 
-[SerializeField]
+[Serializable]
 public class SaveData
 {
     public int stage_unlocked; //this for most recent level playing.
-    public Dictionary<int, int> levelDatas;// key levelid, value stars
+    [SerializedDictionary(keyName:"LevelId",valueName:"Stars Earned")]
+    public SerializedDictionary<int, int> levelDatas;// key levelid, value stars
 }

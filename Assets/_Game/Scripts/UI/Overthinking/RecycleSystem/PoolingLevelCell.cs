@@ -38,7 +38,7 @@ public class PoolingLevelCell : ScrollRect
 
     public IEnumerator Init(IScrollControlDataSource dataSource, RectTransform _prefabCell, UnityAction onInitialized)
     {
-        Debug.Log("Init pooling ...");
+        //Debug.Log("Init pooling ...");
         DataSource = dataSource;
         PrefabCell = _prefabCell;
 
@@ -210,7 +210,7 @@ public class PoolingLevelCell : ScrollRect
             bottomMostCellIndex = (bottomMostCellIndex - 1 + _cellPool.Count) % _cellPool.Count;
         }
 
-        Content.sizeDelta += additionalRows * Vector2.up * _cellHeight;
+        Content.sizeDelta += _cellHeight * additionalRows * Vector2.up;
         if (additionalRows > 0)
             n -= additionalRows;
 
@@ -264,10 +264,9 @@ public class PoolingLevelCell : ScrollRect
             bottomMostCellIndex = topMostCellIndex;
             topMostCellIndex = (topMostCellIndex + 1) % _cellPool.Count;
             _currentItemCount++;
-
         }
 
-        Content.sizeDelta += additionalRows * Vector2.up * _cellHeight;
+        Content.sizeDelta += _cellHeight * additionalRows * Vector2.up;
         if (additionalRows > 0)
             n -= additionalRows;
 

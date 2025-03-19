@@ -93,8 +93,8 @@ public class PoolingLevelCell : ScrollRect
         float width = content.rect.width;
         float height = content.rect.height;
 
-        content.anchorMin = new Vector2(0, 1);
-        content.anchorMax = new Vector2(0, 1);
+        content.anchorMin = new Vector2(0, 0);
+        content.anchorMax = new Vector2(0, 0);
         content.pivot = new Vector2(0, 0); //bottom left scroll
         content.sizeDelta = new Vector2(width, height);
 
@@ -156,15 +156,15 @@ public class PoolingLevelCell : ScrollRect
         //recycle bound...
         SetRecycleBounds();
 
-        //if (direction.y > 0 && _cellPool[topMostCellIndex].MaxY() > _recyclableViewBounds.min.y)
-        if (direction.y > 0 && _cellPool[bottomMostCellIndex].MinY() > _recyclableViewBounds.max.y)
+        if (direction.y > 0 && _cellPool[topMostCellIndex].MaxY() > _recyclableViewBounds.min.y)
+        //if (direction.y > 0 && _cellPool[bottomMostCellIndex].MinY() > _recyclableViewBounds.max.y)
         {
             Debug.Log("Scroll up");
             //return RecycleTopToBottom();
             return RecycleBottomToTop();
         }
-        //else if (direction.y < 0 && _cellPool[bottomMostCellIndex].MinY() < _recyclableViewBounds.max.y)
-        else if (direction.y < 0 && _cellPool[topMostCellIndex].MaxY() < _recyclableViewBounds.min.y)
+        else if (direction.y < 0 && _cellPool[bottomMostCellIndex].MinY() < _recyclableViewBounds.max.y)
+        //else if (direction.y < 0 && _cellPool[topMostCellIndex].MaxY() < _recyclableViewBounds.min.y)
         {
             //return RecycleBottomToTop();
             return RecycleTopToBottom();
@@ -175,7 +175,7 @@ public class PoolingLevelCell : ScrollRect
     //Vector2 RecycleTopToBottom()
     Vector2 RecycleBottomToTop() //reverted name due reverted list, visual opposited with list order //change later
     {
-        //Debug.Log("<color=blue>RecycleBottomToTop</color>");
+        Debug.Log("<color=blue>RecycleBottomToTop</color>");
         _recycling = true;
         int n = 0;
         float posX = 0;
@@ -184,6 +184,7 @@ public class PoolingLevelCell : ScrollRect
         int additionalRows = 0;
 
         while (_cellPool[bottomMostCellIndex].MinY() > _recyclableViewBounds.max.y && _currentItemCount > _cellPool.Count)
+        //while (_cellPool[bottomMostCellIndex].MaxY() > _recyclableViewBounds.min.y && _currentItemCount > _cellPool.Count)
         {
             if (--_topMostCellColumn < 0)
             {
@@ -194,11 +195,11 @@ public class PoolingLevelCell : ScrollRect
                 additionalRows++;
             }
 
-            if (_bottomMostCellColumn < 0)
-            {
-                _bottomMostCellColumn = _columns - 1;
-                additionalRows--;
-            }
+            //if (--_bottomMostCellColumn < 0)
+            //{
+            //    _bottomMostCellColumn = _columns - 1;
+            //    additionalRows--;
+            //}
 
             posX = _topMostCellColumn * _cellWidth; 
             _cellPool[bottomMostCellIndex].anchoredPosition = new Vector2(posX, posY);
@@ -218,7 +219,8 @@ public class PoolingLevelCell : ScrollRect
             c.anchoredPosition -= _cellPool[topMostCellIndex].sizeDelta.y * n * Vector2.up;
         }
 
-        Content.anchoredPosition -= _cellPool[topMostCellIndex].sizeDelta.y * n * Vector2.up;
+        Content.anchoredPosition += _cellPool[bottomMostCellIndex].sizeDelta.y * n * Vector2.down; //somehow plus error
+        Debug.Log("Check: " + Content.anchoredPosition);
         _recycling = false;
         Vector2 newPos = new Vector2(0, _cellPool[topMostCellIndex].sizeDelta.y * n);
         return -newPos;
@@ -227,7 +229,7 @@ public class PoolingLevelCell : ScrollRect
     //Vector2 RecycleBottomToTop()
     Vector2 RecycleTopToBottom()
     {
-        //Debug.Log("<color=green>RecycleTopToBottom</color>");
+        Debug.Log("<color=green>RecycleTopToBottom</color>");
         _recycling = true;
 
         int n = 0;
@@ -249,7 +251,6 @@ public class PoolingLevelCell : ScrollRect
             posX = _bottomMostCellColumn * _cellWidth;
             _cellPool[topMostCellIndex].anchoredPosition = new Vector2(posX, posY);
 
-            //if (--_topMostCellColumn < 0)
             //if (++_topMostCellColumn >= _columns) //somehow auto scroll to end ?
             //{
             //    Debug.Log("Rec 3: " + _topMostCellColumn + " -- " + _columns);
